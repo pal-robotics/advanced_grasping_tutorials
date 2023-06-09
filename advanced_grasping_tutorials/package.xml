@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>advanced_grasping_tutorials</name>
+  <version>0.0.0</version>
+  <description>The advanced_grasping_tutorials package</description>
+
+  <maintainer email="david.terkuile@pal-robotics.com">David ter Kuile</maintainer>
+
+  <license>LGPL-3.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>pal_bt_grasping_tiago</depend>
+  <depend>advanced_grasping_tutorials_nodes</depend>
+
+  <export>
+    <pal_bt_grasping_tiago plugin="${prefix}/advanced_grasping_example_plugin_description.xml"/>
+  </export>
+</package>

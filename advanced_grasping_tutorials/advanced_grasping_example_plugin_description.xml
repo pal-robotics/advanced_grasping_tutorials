@@ -1,0 +1,8 @@
+<library path="libadvanced_grasping_tutorials">
+
+  <class name="advanced_grasping/ExampleServer" type="advanced_grasping::ExampleServer" base_class_type="advanced_grasping::AdvancedGraspingPlugin">
+    <description>
+        Load the grasp server for advanced grasping
+    </description>
+  </class>
+</library>

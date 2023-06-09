@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>advanced_grasping_tutorials_nodes</name>
+  <version>0.0.0</version>
+  <description>The advanced_grasping_tutorials_nodes package</description>
+
+  <maintainer email="david.terkuile@pal-robotics.com">David ter Kuile</maintainer>
+
+  <license>LGPL-3.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>pal_bt_actions_moveit</depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+    <behaviortree_cpp_v3 bt_lib_plugin="libadvanced_grasping_tutorials_nodes" />
+  </export>
+</package>
