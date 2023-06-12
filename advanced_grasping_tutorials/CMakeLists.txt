@@ -50,6 +50,6 @@ install(FILES
   advanced_grasping_example_plugin_description.xml
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
-install(PROGRAMS 
+install(PROGRAMS scripts/example_demo.py
         DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
