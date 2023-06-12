@@ -4,6 +4,7 @@ project(advanced_grasping_tutorials_nodes)
 add_compile_options(-std=c++14)
 
 find_package(catkin REQUIRED COMPONENTS
+    behaviortree_cpp_v3
     pal_bt_actions_moveit
     
 )
@@ -15,6 +16,7 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
   CATKIN_DEPENDS 
+  behaviortree_cpp_v3
   pal_bt_actions_moveit
   
 )
@@ -50,9 +52,5 @@ install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
   FILES_MATCHING PATTERN "*.h"
 )
-#############
-## Install ##
-#############
-
 
 
