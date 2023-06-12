@@ -1,0 +1,35 @@
+<launch>
+    <arg name="show_rviz"                 default="False"/>
+    <arg name="plane_param_file"          default="$(find advanced_grasping_tutorials)/config/perception/plane_segmentation_params.yaml"/>
+    <arg name="tabletop_param_file"       default="$(find advanced_grasping_tutorials)/config/perception/object_detection_params.yaml"/>
+    <arg name="object_hist_param_file"    default="$(find advanced_grasping_tutorials)/config/perception/object_histogram_params.yaml"/>
+    <arg name="cloud_topic"               default="/xtion/depth_registered/points"/>
+    <arg name="image_topic"               default="/xtion/rgb/image_raw/compressed"/>
+    <arg name="base_link"                 value="base_footprint"/>
+
+
+    <rosparam command="load" file="$(find advanced_grasping_tutorials)/config/example_server_config.yaml"/>
+    <rosparam command="load" file="$(arg plane_param_file)"/>
+    <rosparam command="load" file="$(arg tabletop_param_file)"/>
+    <rosparam command="load" file="$(arg object_hist_param_file)"/>
+
+    <node name="advanced_grasping_node" pkg="pal_bt_grasping_tiago" type="advanced_grasping_node" output="screen">
+        <remap from="cloud_topic"               to="$(arg cloud_topic)"/>
+        <remap from="image_topic"               to="$(arg image_topic)"/>
+        <param name="base_link" value="$(arg base_link)"/>
+
+        <rosparam command="load" file="$(find advanced_grasping_tutorials)/config/grasp_generation/moveit_grasps_generator_config.yaml"/>
+        <rosparam command="load" file="$(find advanced_grasping_tutorials)/config/grasp_generation/moveit_grasps_config.yaml"/>
+        <rosparam command="load" file="$(find advanced_grasping_tutorials)/config/grasp_generation/moveit_grasps_data_pal-gripper.yaml" />
+        <rosparam command="load" file="$(find advanced_grasping_tutorials)/config/grasp_generation/moveit_grasps_data_robotiq-2f-85.yaml" />
+        <rosparam command="load" file="$(find advanced_grasping_tutorials)/config/grasp_generation/moveit_grasps_data_robotiq-2f-140.yaml" />
+        <rosparam command="load" file="$(find advanced_grasping_tutorials)/config/grasp_generation/moveit_grasps_data_robotiq-epick.yaml" />
+
+    </node>
+
+
+
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find pal_bt_grasping_tiago)/config/rviz/grasp_demo.rviz" if="$(arg show_rviz)" />
+
+
+</launch>

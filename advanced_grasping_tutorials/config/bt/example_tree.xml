@@ -13,13 +13,17 @@
                         <RetryUntilSuccessful num_attempts="5">
                             <Fallback>
                                 <Sequence>
-                                    <Action ID="GraspEndEffectorAction" grasping_side="{grasping_side}"/>
+                                    <Delay delay_msec="2000"> <!-- A small delay to allow the object to be placed inside the gripper -->
+                                        <Action ID="GraspEndEffectorAction" grasping_side="{grasping_side}"/>
+                                    </Delay>    
                                     <Delay delay_msec="250"> <!-- A small delay to allow the grasp detector information to be set in the blackboard -->
                                         <Condition ID="isGrasped" grasped="{grasp_status}"/>
                                     </Delay>                                
                                 </Sequence>
-                                <Action ID="ReleaseEndEffectorAction" grasping_side="{grasping_side}"/>
-                                <Action ID="AlwaysFailure"/>
+                                <Sequence>
+                                    <Action ID="ReleaseEndEffectorAction" grasping_side="{grasping_side}"/>
+                                    <Action ID="AlwaysFailure"/>
+                                </Sequence>
                             </Fallback>
                         </RetryUntilSuccessful>
                         <Action ID="MoveTo" motion_name="unfold_arm" grasping_arm="{grasping_side}"/>
