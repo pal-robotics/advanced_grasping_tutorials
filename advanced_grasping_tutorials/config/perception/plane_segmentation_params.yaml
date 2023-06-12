@@ -1,0 +1,12 @@
+PlanarSegmentationParams:
+  rate: 2.0
+  processing_frame: "base_footprint"
+  passthrough_zmin: 0.2
+  passthrough_zmax: 1.1
+  passthrough_xmin: 0.2
+  passthrough_xmax: 1.1
+  distance_threshold: 0.015
+  downsampling_size: 0.001
+  use_horizontal_filter: true
+  horizontal_filter_threshold: 10.0
+  horizontal_filter_max_attempts: 3

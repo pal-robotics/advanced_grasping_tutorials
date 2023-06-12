@@ -1,0 +1,19 @@
+TabletopDetectionParams:
+  rate: 3.0
+  detector_type: 2
+  box_neighbors: 10
+  box_distance_threshold: 0.001
+  box_points_threshold: 20
+  sphere_neighbors: 10
+  sphere_distance_threshold: 0.001
+  sphere_points_threshold: 150
+  sphere_minRadius: 0.015
+  sphere_maxRadius: 0.05
+  cylinder_neighbors: 10
+  cylinder_distance_threshold: 0.01
+  cylinder_points_threshold: 50
+  cylinder_minRadius: 0.015
+  cylinder_maxRadius: 0.05
+  closer_cluster_points_threshold: 100
+  closer_cluster_minHeight_threshold: 0.05
+  closer_cluster_maxHeight_threshold: 0.25

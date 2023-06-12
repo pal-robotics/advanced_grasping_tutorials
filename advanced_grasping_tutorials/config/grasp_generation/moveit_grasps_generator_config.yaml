@@ -1,0 +1,35 @@
+grasp_generator_config:
+  max_num_grasp_candidates_: 10
+  # Enable generation types
+  enable_face_generation_param_: true
+  enable_edge_generation_param_: false
+  enable_corner_generation_param_: false
+
+  # Selection arroud which axis to aply the generation
+  generate_arround_x_axis_param_: true
+  generate_arround_y_axis_param_: true
+  generate_arround_z_axis_param_: true
+
+  # Scoring parameters
+  # Ideal grasp orientation
+  ideal_roll_param_: 3.14 
+  ideal_pitch_param_: 0.0
+  ideal_yaw_param_: 0.0
+
+  # Grasp generator weights
+  # Orientation
+  roll_weight_param_: 5.0
+  pitch_weight_param_: 5.0
+  yaw_weight_param_: 5.0
+  # Translation
+  x_weight_param_: 1.0
+  y_weight_param_: 0.0
+  z_weight_param_: 0.0
+
+  # Finger gripper specific weights
+  depth_weight_param_: 0.0
+  width_weight_param_: 0.0
+
+  # Suction gripper specific weights
+  overhang_weight_param_: 10.0
+  suction_voxel_overlap_param_: 1.0     # Percentage of overlapping
