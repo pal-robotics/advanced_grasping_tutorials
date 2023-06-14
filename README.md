@@ -35,7 +35,7 @@ And finally source the workspace.
 ## Running the tutorial
 
 
-Tutorials can run in a simulation environment or on a real robot.
+The tutorials can both be run in a simulation environment or on the real robot.
 
 To launch the simulation environment with the prerequisites for Advanced Grasping:
 ```bash
