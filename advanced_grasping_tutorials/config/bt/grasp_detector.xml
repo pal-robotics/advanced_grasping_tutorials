@@ -5,6 +5,7 @@
     <BehaviorTree ID="GraspMainTree">
         <Parallel failure_threshold="1" success_threshold="1">
             <Action ID="DisableHeadManager"/>
+            <Action ID="GraspDetector" grasped="{grasp_status}" grasping_side="{grasping_side}"/>
             <Sequence>
                 <Fallback>
                     <Sequence>
@@ -12,9 +13,12 @@
                         <RetryUntilSuccessful num_attempts="5">
                             <Fallback>
                                 <Sequence>
-                                    <Delay delay_msec="3000"> <!-- A small delay to allow the object to be placed inside the gripper -->
+                                    <Delay delay_msec="2000"> <!-- A small delay to allow the object to be placed inside the gripper -->
                                         <Action ID="GraspEndEffectorAction" grasping_side="{grasping_side}"/>
-                                    </Delay>                               
+                                    </Delay>    
+                                    <Delay delay_msec="250"> <!-- A small delay to allow the grasp detector information to be set in the blackboard -->
+                                        <Condition ID="isGrasped" grasped="{grasp_status}"/>
+                                    </Delay>                                
                                 </Sequence>
                                 <Sequence>
                                     <Action ID="ReleaseEndEffectorAction" grasping_side="{grasping_side}"/>
@@ -38,6 +42,9 @@
         <Action ID="GraspEndEffectorAction">
             <input_port name="grasping_side"/>
         </Action>
+        <Condition ID="isGrasped">
+            <input_port name="grasped"/>
+        </Condition>
         <Action ID="DisableHeadManager"/>
         <Action ID="MoveTo">
             <input_port name="motion_name"/>
@@ -45,6 +52,10 @@
         </Action>
         <Action ID="OfferGripperAction">
             <input_port name="grasping_arm"/>
+        </Action>
+        <Action ID="GraspDetector">
+            <input_port name="grasping_side"/>
+            <output_port name="grasped"/>
         </Action>
     </TreeNodesModel>
     <!-- ////////// -->
