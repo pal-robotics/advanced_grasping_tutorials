@@ -16,7 +16,7 @@ In order to compile this package you will need:
 
 ### Installing
 
-Open the docker container of Gallium. Create a new [workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace)
+Open the docker container of Gallium and create a new [workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace).
 
 Clone this repository on your workspace.
 
@@ -35,11 +35,11 @@ And finally source the workspace.
 ## Running the tutorial
 
 
-The tutorials can both be run in a simulation environment or on the real robot.
+Tutorials can run in a simulation environment or on a real robot.
 
 To launch the simulation environment with the prerequisites for Advanced Grasping:
 ```bash
-roslaunch tiago_gazebo tiago_gazebo.launch advanced_grasping:=true
+roslaunch tiago_gazebo tiago_gazebo.launch advanced_grasping:=true  end_effector:=pal-gripper
 ```
 
 Copy the behaviortree files from the folder [```config/bt```](/advanced_grasping_tutorials/config/bt/) to ```~/.pal/bt```. 
