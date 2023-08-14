@@ -42,11 +42,11 @@ To launch the simulation environment with the prerequisites for Advanced Graspin
 roslaunch tiago_gazebo tiago_gazebo.launch advanced_grasping:=true  end_effector:=pal-gripper
 ```
 
-Copy the behaviortree files from the folder [```config/bt```](/advanced_grasping_tutorials/config/bt/) to ```~/.pal/bt```. 
+Copy the behaviortree files from the folder [```config/bt```](/advanced_grasping_tutorials/config/bt/) to ```/.pal/advanced_grasping/bt```. 
 
 ``` bash
 roscd advanced_grasping_tutorials
-cp config/bt/* ~/.pal/bt/
+cp config/bt/* /.pal/advanced_grasping/bt/
 ```
 
 To launch the grasping server:
