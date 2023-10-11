@@ -1,7 +1,6 @@
 behaviortree_config:
   move_group_capabilities:
     - move_group/ExecuteTaskSolutionCapability
-  behaviortree_folder: "/.pal/advanced_grasping/bt"
   actions:
     - example_grasp_action:
         behaviortree_file: example_tree.xml

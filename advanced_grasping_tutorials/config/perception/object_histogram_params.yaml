@@ -1,7 +1,0 @@
-TabletopHistogramParams:
-  threshold: 254
-  dilate_iterations: 9
-  dilate_size: 7
-  erode_iterations: 0
-  erode_size: 3
-  dark_pixels_threshold: 15
