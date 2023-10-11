@@ -132,14 +132,7 @@ In the next section will be shown how to link this newly created tree to the Adv
 
 In this section will be explained how to change the behavior tree linked to an action of the Advanced Grasping package.
 
-First, copy the behavior trees to the `.pal` folder again. Ensure that the newly created tree is now located in this folder.
-
-``` bash
-roscd advanced_grasping_tutorials
-cp config/bt/* ~/.pal/bt/
-```
-
-Next, update the [example_server_config.yaml](/advanced_graspign_tutorials/config/example_server_config.yaml) file to link the new tree to the action `/example_grasp_action`.
+Update the [example_server_config.yaml](/advanced_graspign_tutorials/config/example_server_config.yaml) file to link the new tree to the action `/example_grasp_action`.
 
 ``` yaml
   actions:
@@ -148,8 +141,14 @@ Next, update the [example_server_config.yaml](/advanced_graspign_tutorials/confi
         action_plugin: advanced_grasping/ExampleServer
 ```
 
-Now the behavior tree has been properly linked to the action. Run the demo again to test the new tree.
+Now the behavior tree has been properly linked to the action. Start the action server again and run the demo again to test the new tree.
+```bash
+roslaunch advanced_grasping_tutorials advanced_grasping.launch force_overwrite:=true
+```
 
+```bash
+rosrun advanced_grasping_tutorials example_demo.py
+```
 In the next section will be shown how a new action can be created for the Advanced Grasping package.
 
 ## Create a new action server plugin
