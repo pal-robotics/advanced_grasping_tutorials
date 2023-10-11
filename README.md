@@ -11,7 +11,7 @@ This package contains a tutorial for the Advanced Grasping package from PAL Robo
 
 In order to compile this package you will need:
 
-* A docker container of PAL Gallium with the package pal_bt_grasping
+* A docker container of Gallium (the ROS distribution of PAL) with the package pal_bt_grasping
 * The packages pal_bt_actions_moveit and pal_bt_grasping. Both are non public packages distributed by PAL Robotics.
 
 ### Installing
@@ -21,7 +21,7 @@ Open the docker container of Gallium and create a new [workspace](http://wiki.ro
 Clone this repository on your workspace.
 
 ``` bash
-git clone ...
+git clone git@gitlab:davidterkuile/advanced_grasping_tutorials.git
 ```
 
 And then compile it.
@@ -41,14 +41,6 @@ To launch the simulation environment with the prerequisites for Advanced Graspin
 ```bash
 roslaunch tiago_gazebo tiago_gazebo.launch advanced_grasping:=true  end_effector:=pal-gripper
 ```
-
-Copy the behaviortree files from the folder [```config/bt```](/advanced_grasping_tutorials/config/bt/) to ```/.pal/advanced_grasping/bt```. 
-
-``` bash
-roscd advanced_grasping_tutorials
-cp config/bt/* /.pal/advanced_grasping/bt/
-```
-
 To launch the grasping server:
 ```bash
 roslaunch advanced_grasping_tutorials advanced_grasping.launch
@@ -59,6 +51,16 @@ rosrun advanced_grasping_tutorials example_demo.py
 ```
 
 In this simple example TIAGo will offer its arm, and tries to grasp the object that is placed in its gripper. 
+
+The advanced grasping server will load behaviortree files that are present in the folder ``~/.pal/advanced_grasping/bt``. On launching [advanced_grasping.launch](https://gitlab/davidterkuile/advanced_grasping_tutorials/-/blob/main/advanced_grasping_tutorials/launch/advanced_grasping.launch) the behaviortrees present in the folder given by the argument ``bt_folder`` are copied to the behavior tree folder. 
+
+By default only the files that are not present in ``~/.pal/advanced_grasping/bt`` are copied to this folder. Alternatively, if you want to replace existing behaviortrees the ``force_overwrite`` argument can be used as shown below.
+
+To launch the grasping server:
+```bash
+roslaunch advanced_grasping_tutorials advanced_grasping.launch force_overwrite:=true
+```
+
 
 ## Create a new behavior tree node
 
