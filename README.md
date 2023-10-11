@@ -1,6 +1,6 @@
 # PAL Advanced Grasping Tutorial
 
-This package contains a tutorial for the Advanced Grasping package from PAL Robotics. This package consists of a framework that simplifies the grasping capabilities of TIAGo and TIAGo++. In this tutorial it is explained which customization options are available for Advanced Grasping in order to adapt the framework to specific applications. The following tasks will be covered:
+This package contains a tutorial for the Advanced Grasping package from PAL Robotics. This package consists of a framework that simplifies the grasping capabilities of TIAGo and TIAGo++. In this tutorial, it is explained which customization options are available for Advanced Grasping in order to adapt the framework to specific applications. The following tasks will be covered:
 
 * Create a new behavior tree node
 * Change a behavior tree node within a behaviortree
