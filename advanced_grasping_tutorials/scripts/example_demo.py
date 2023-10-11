@@ -34,5 +34,5 @@ if __name__ == "__main__":
     else:
         rospy.loginfo("Object grasped successfully")
 
-    rospy.logerr("Example demo finished")
+    rospy.loginfo("Example demo finished")
     
