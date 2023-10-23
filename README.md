@@ -66,7 +66,12 @@ roslaunch advanced_grasping_tutorials advanced_grasping.launch force_overwrite:=
 
 This section will list the steps to create a new node that can be used for behavior trees. The code can be found in the package [advanced_grasping_tutorials_nodes](/advanced_grasping_tutorials_nodes/). Creating the node consists of three steps:
 
-1. Create a new c++ class with header file. This class ```MTCOfferGripperAction``` is inherited from a behavior tree node class, in this case from the custom PAL class ```MTCNode```. This class allows to create behavior tree nodes executing tasks of [Moveit Task Constructor](https://github.com/ros-planning/moveit_task_constructor). With ```MTCOfferGripperAction``` TIAGo move its gripper in front of him. In this class it is important to set the function ```providedPorts```.  This functions sets the input and output ports that allows the node to retrieve and set valuables in the [blackboard](https://www.behaviortree.dev/docs/3.8/tutorial-basics/tutorial_02_basic_ports) of the behavior tree. In this case the node requires information on which side is need to grasp if TIAGo++ is used. For TIAGo this is not necessary.
+1. Create a new c++ class with header file
+
+Each new behavior tree node needs to inherit from a behavior tree base class, in general given by the BehaviorTreeCPP library. In this tutorial a custom base class created by PAL is used, the ```MTCNode```. This class allows to create behavior tree nodes executing tasks of [Moveit Task Constructor](https://github.com/ros-planning/moveit_task_constructor). The ```MTCOfferGripperAction``` will let TIAGo move its gripper in front of it. When inheriting from ```MTCNode``` two virtual functions are declared and they have to be defined for the inherited class:
+
+- ```providedPorts:``` (All classes of BehaviorTreeCPP) This function sets the input and output ports that allow the node to retrieve and set variables in the [blackboard](https://www.behaviortree.dev/docs/3.8/tutorial-basics/tutorial_02_basic_ports) of the behavior tree. This tutorial has been created both for TIAGo (single arm) and TIAGo++ (dual arm). For compatibility with TIAGo++ the node requires a port to get the information on which arm to use, `left` or `right`.
+- ```setupTask:``` (```MTCNode``` specific) This function creates the task that will be performed by Moveit Task Constructor and is required when inheriting from ```MTCNode```.
 
 ``` cpp
   static BT::PortsList providedPorts()
@@ -75,14 +80,18 @@ This section will list the steps to create a new node that can be used for behav
     return ports;
   }
 ```
-2. Register the newly created behavior tree node as a plugin that can be used by BehaviorTreeCPP. This is done in [behaviortree_register_example_plugins.cpp](/advanced_grasping_tutorials_nodes/src/behaviortree_register_example_plugins.cpp). The name of the node *OfferGripperAction* will be used to call the node from the behavior tree xml file.
+2. Register the newly created behavior tree node as a plugin. 
+
+ Registering the behavior tree node as a plugin for BehaviorTreeCPP is done in [behaviortree_register_example_plugins.cpp](/advanced_grasping_tutorials_nodes/src/behaviortree_register_example_plugins.cpp). The name of the node *OfferGripperAction* will be used to call the node from the behavior tree xml file.
 
 ``` cpp
   factory.registerNodeType<pal::MTCOfferGripperAction>("OfferGripperAction");
 
 ```
 
-3. Export the library as a bahaviortree plugin in both the [CMakeLists.txt](/advanced_grasping_tutorials_nodes/CMakeLists.txt) and the [package.xml](/advanced_grasping_tutorials_nodes/package.xml). 
+3. Export the library as a bahavior tree plugin
+
+Exporting the behavior tree plugin is done in both the [CMakeLists.txt](/advanced_grasping_tutorials_nodes/CMakeLists.txt) and the [package.xml](/advanced_grasping_tutorials_nodes/package.xml). 
 
 CMakeLists.txt
 ``` CMAKE
