@@ -147,7 +147,7 @@ In the next section will be shown how to link this newly created tree to the Adv
 
 In this section will be explained how to change the behavior tree linked to an action of the Advanced Grasping package.
 
-Update the [example_server_config.yaml](advanced_graspign_tutorials/config/example_server_config.yaml) file to link the new tree to the action `/example_grasp_action`.
+Update the [example_server_config.yaml](advanced_grasping_tutorials/config/example_server_config.yaml) file to link the new tree to the action `/example_grasp_action`.
 
 ``` yaml
   actions:
@@ -170,7 +170,7 @@ In the next section will be shown how a new action can be created for the Advanc
 
 In this section is explained how to create a new action server that can be used in the Advanced Grasping framework. Creating a new action server is necessary when the current actions are not sufficient, e.g. other action arguments are required for the behavior tree to run correctly.
 
-In the package `advanced_grasping_tutorials` a new action server is created, *ExampleServer*. This server uses the existing action *GraspObjectAction*. A [cpp class](advanced_grasping_tutorials/src/example_plugin.cpp) and corresponding [header file](example_grasping_tutorials/include/advanced_grasping_tutorials/example_plugin.h) are created for this new action server. Note that the class needs to inherit from the *AdvancedGraspingServer* class, with an action as template argument.
+In the package `advanced_grasping_tutorials` a new action server is created, *ExampleServer*. This server uses the existing action *GraspObjectAction*. A [cpp class](advanced_grasping_tutorials/src/example_plugin.cpp) and corresponding [header file](advanced_grasping_tutorials/include/advanced_grasping_tutorials/example_plugin.h) are created for this new action server. Note that the class needs to inherit from the *AdvancedGraspingServer* class, with an action as template argument.
 
 For the new server two functions have to be implemented:
 1. *configureBlackboard()*: This function sets the information of the goal arguments in the blackboard as variables before the behavior tree will start.
